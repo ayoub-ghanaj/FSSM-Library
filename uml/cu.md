@@ -1,5 +1,5 @@
 ## cas d'utilisation
 ```mermaid
 graph LR
-  Administrator[UNICODE["👤"] Administrator] --> Utilisateur["fab:fa-user Utilisateur"]
+  Administrator["👤 Administrator"] --> Utilisateur["fab:fa-user Utilisateur"]
 ```
