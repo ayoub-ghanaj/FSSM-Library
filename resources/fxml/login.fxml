@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="696.0" prefWidth="1124.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="696.0" prefWidth="482.0">
+         <children>
+            <ImageView fitHeight="145.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true" />
+            <Label text="Login :">
+               <VBox.margin>
+                  <Insets bottom="3.0" left="10.0" top="110.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <TextField prefHeight="40.0" prefWidth="347.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="15.0" right="10.0" />
+               </VBox.margin>
+            </TextField>
+            <Label text="Password :">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <PasswordField prefHeight="40.0" prefWidth="347.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="15.0" right="10.0" />
+               </VBox.margin>
+            </PasswordField>
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="92.0" text="Login">
+               <VBox.margin>
+                  <Insets left="24.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="696.0" prefWidth="912.0">
+         <bottom>
+            <BorderPane prefHeight="639.0" prefWidth="651.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="12.0" right="12.0" top="12.0" />
+               </BorderPane.margin>
+               <bottom>
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="753.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <RadioButton mnemonicParsing="false" selected="true" />
+                        <RadioButton mnemonicParsing="false" />
+                        <RadioButton mnemonicParsing="false" />
+                        <RadioButton mnemonicParsing="false" />
+                     </children>
+                     <BorderPane.margin>
+                        <Insets bottom="4.0" />
+                     </BorderPane.margin>
+                  </HBox>
+               </bottom>
+               <center>
+                  <ImageView fitHeight="608.0" fitWidth="745.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </bottom>
+         <top>
+            <HBox alignment="TOP_RIGHT" prefHeight="23.0" prefWidth="417.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" text="-">
+                     <font>
+                        <Font name="Berlin Sans FB" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button disable="true" mnemonicParsing="false" text="□">
+                     <font>
+                        <Font name="Berlin Sans FB" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" text="x">
+                     <font>
+                        <Font name="Berlin Sans FB" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="15.0" />
+               </BorderPane.margin>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</HBox>

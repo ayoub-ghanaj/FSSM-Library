@@ -2,6 +2,7 @@
   <library name="lib">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../../../../Program Files/javafx/lib" />
+      <root url="jar://$PROJECT_DIR$/../sqlite-jdbc-3.20.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
