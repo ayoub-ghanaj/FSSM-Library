@@ -2,16 +2,19 @@
 ```mermaid
 graph LR
   Administrator{{"👤 Administrator"}} --> Utilisateur{{"👤 Utilisateur"}}
-  Utilisateur --> NouvelEmprunt["Nouvel Emprunt"]
+  Utilisateur --> NouvelEmprunt["Nouvel emprunt"]
   NouvelEmprunt --> |include| Matériel["Sélectionner un matériel"]
-  NouvelEmprunt --> |include| Etudiant["Coordonnées de l’étudiant"]
+  NouvelEmprunt --> |include| Coordonnées["Coordonnées de l’étudiant"]
   NouvelEmprunt --> |include| Durée["Durée de l’emprunt"]
   Utilisateur --> Historique["Historique des emprunts"]
-  Historique --> |include| EtudiantSelectionner["Sélectionner un étudiant"]
-  EtudiantSelectionner -.-> |extend| Etudiant
+  Historique --> |include| Etudiant["Sélectionner un étudiant"]
+  Etudiant -.-> |extend| Coordonnées
   Utilisateur --> Retards["Lister les retards"]
   Utilisateur --> Retour["Enregistrer le retour"]
-  Retour --> |include| Matériel
+  Retour --> |include| Emprunt["Sélectionner un emprunt"]
+  Matériel --> |include| Disponibilité["vérifier la disponibilité"]
+  Utilisateur --> Statistique["Statistique des emprunts"]
+  Etudiant -.-> |extend| Statistique
 ```
 ## classes
 ```mermaid
