@@ -44,6 +44,6 @@ classDiagram
     }
     
     Matériel "1..n" -- "1..1" Type : Contient
-    Emprunt "0..n" -- "1..1" Matériel : À propos
-    Emprunt "1..n" -- "1..1" Etudiant : À propos
+    Matériel "1..1" --o "0..n" Emprunt : À propos
+    Etudiant "1..1" --o "1..n" Emprunt : À propos
 ```
