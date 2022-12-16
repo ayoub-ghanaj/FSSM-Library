@@ -13,3 +13,33 @@ graph LR
   Utilisateur --> Retour["Enregistrer le retour"]
   Retour --> |include| Matériel
 ```
+## classes
+```mermaid
+classDiagram
+    class Etudiant {
+        - Identifiant : String
+        + Nom : String
+        + Prénom : String
+        - AdresseMail : String
+        %% ajouter(object Etudiant)
+        %% maj(object Etudiant)
+    }
+    class Type {
+        - Identifiant : Number
+        + Libellé : String
+    }
+    class Matériel {
+        - Identifiant : Number
+        + Photo : String
+        + Nom : String
+        # MatérielType : Type
+    }
+    class Emprunt {
+        - Identifiant : Number
+        # EtudiantEmprunté : Etudiant
+        # MatérielEmprunté : Matériel
+        - DateEmprunté : Date
+        - DateRetour : Date
+        - Durée : Number
+    }
+```
