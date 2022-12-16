@@ -21,8 +21,8 @@ classDiagram
         + Nom : String
         + Prénom : String
         - AdresseMail : String
-        %% ajouter(object Etudiant)
-        %% maj(object Etudiant)
+        + Ajouter(object Etudiant)
+        + Maj(object Etudiant)
     }
     class Type {
         - Identifiant : Number
@@ -42,4 +42,8 @@ classDiagram
         - DateRetour : Date
         - Durée : Number
     }
+    
+    Matériel "1..n" -- "1..1" Type : Contient
+    Emprunt "0..n" -- "1..1" Matériel : À propos
+    Emprunt "1..n" -- "1..1" Etudiant : À propos
 ```
