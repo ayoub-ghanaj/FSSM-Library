@@ -16,27 +16,27 @@ graph LR
   Utilisateur --> Statistique["Statistique des emprunts"]
   Etudiant -.-> |extend| Statistique
   Utilisateur --> CrudMatériel["CRUD matériel"]
-  NouvelMatériel["Nouvel matériel"] --|> CrudMatériel
+  CrudMatériel <|-- NouvelMatériel["Nouvel matériel"]
   NouvelType["Nouvel type"] -.-> |extend| NouvelMatériel
-  ModifierMatériel["Modifier un matériel"] --|> CrudMatériel
+  CrudMatériel <|-- ModifierMatériel["Modifier un matériel"]
   ModifierMatériel --> |include| Matériel
-  SupprimerMatériel["Supprimer un matériel"] --|> CrudMatériel
+  CrudMatériel <|-- SupprimerMatériel["Supprimer un matériel"]
   SupprimerMatériel --> |include| Matériel
-  ListerMatériels["Lister les matériels"] --|> CrudMatériel
+  CrudMatériel <|-- ListerMatériels["Lister les matériels"]
   Utilisateur --> CrudEtudiant["CRUD étudiant"]
-  Coordonnées --|> CrudEtudiant
-  ModifierEtudiant["Modifier un étudiant"] --|> CrudEtudiant
+  CrudEtudiant <|-- Coordonnées
+  CrudEtudiant <|-- ModifierEtudiant["Modifier un étudiant"]
   ModifierEtudiant --> |include| Etudiant
-  SupprimerEtudiant["Supprimer un étudiant"] --|> CrudEtudiant
+  CrudEtudiant <|-- SupprimerEtudiant["Supprimer un étudiant"]
   SupprimerEtudiant --> |include| Etudiant
-  ListerEtudiants["Lister les étudiants"] --|> CrudEtudiant
+  CrudEtudiant <|-- ListerEtudiants["Lister les étudiants"]
   Administrator --> CrudUtilisateur["CRUD utilisateur"]
-  NouvelUtilisateur["Nouvel utilisateur"] --|> CrudUtilisateur
-  ModifierUtilisateur["Modifier un utilisateur"] --|> CrudUtilisateur
+  CrudUtilisateur <|-- NouvelUtilisateur["Nouvel utilisateur"]
+  CrudUtilisateur <|-- ModifierUtilisateur["Modifier un utilisateur"]
   ModifierUtilisateur --> |include| SUtilisateur["Sélectionner un utilisateur"]
-  SupprimerUtilisateur["Supprimer un utilisateur"] --|> CrudUtilisateur
+  CrudUtilisateur <|-- SupprimerUtilisateur["Supprimer un utilisateur"]
   SupprimerUtilisateur --> |include| SUtilisateur
-  ListerUtilisateurs["Lister les utilisateurs"] --|> CrudUtilisateur
+  CrudUtilisateur <|-- ListerUtilisateurs["Lister les utilisateurs"]
 ```
 ## classes
 ```mermaid
@@ -46,14 +46,14 @@ classDiagram
         - Nom : String
         - Prénom : String
         - AdresseMail : String
-        + {Static} Ajouter(Object Etudiant)
+        + Ajouter(Object Etudiant)
         + Maj(Object Etudiant)
-        + {Static} Supprimer(String Identifiant)
+        + Supprimer(String Identifiant)
     }
     class Type {
         - Identifiant : Number
         - Libellé : String
-        + {Static} Ajouter(Object Type)
+        + Ajouter(Object Type)
     }
     class Matériel {
         - Identifiant : Number
@@ -61,9 +61,9 @@ classDiagram
         - Nom : String
         - Disponibilité : Boolean = True
         # MatérielType : Type
-        + {Static} Ajouter(Object Matériel)
+        + Ajouter(Object Matériel)
         + Maj(Object Matériel)
-        + {Static} Supprimer(Number Identifiant)
+        + Supprimer(Number Identifiant)
     }
     class Emprunt {
         - Identifiant : Number
@@ -72,9 +72,9 @@ classDiagram
         - DateEmprunté : Date = SYSDATE
         - DateRetour : Date
         - Durée : Number
-        + {Static} Ajouter(Object Emprunt)
+        + Ajouter(Object Emprunt)
         + Maj(Object Emprunt)
-        + {Static} Retour(Number Identifiant)
+        + Retour(Number Identifiant)
     }
     class Utilisateur {
         - Identifiant : String
@@ -84,9 +84,9 @@ classDiagram
         - Role : String
         - MotDePasse : Hash
         - DateInscription : Date = SYSDATE
-        + {Static} Ajouter(Object Utilisateur)
+        + Ajouter(Object Utilisateur)
         + Maj(Object Utilisateur)
-        + {Static} Supprimer(String Identifiant)
+        + Supprimer(String Identifiant)
     }
     
     Matériel "1..n" -- "1..1" Type : Contient
