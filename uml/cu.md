@@ -39,7 +39,7 @@ graph LR
   SupprimerUtilisateur --> |include| SUtilisateur
   ListerUtilisateurs["Lister les utilisateurs"] --> CrudUtilisateur
   
-  NouvelEmprunt & Historique & Retards & Retour & Statistique & CrudMatériel & CrudEtudiant & CrudUtilisateur --> |include| Authentification[(authentification)]
+  GestionEmprunts & Historique & Retards & Retour & Statistique & CrudMatériel & CrudEtudiant & CrudUtilisateur --> |include| Authentification[(authentification)]
 ```
 ## classes
 ```mermaid
