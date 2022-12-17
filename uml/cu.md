@@ -2,7 +2,8 @@
 ```mermaid
 graph LR
   Administrator{{"👤 Administrator"}} ==> Utilisateur{{"👤 Utilisateur"}}
-  Utilisateur ==> NouvelEmprunt["Nouvel emprunt"]
+  Utilisateur ==> GestionEmprunts["Gestion d'emprunts"]
+  NouvelEmprunt["Nouvel emprunt"] --> GestionEmprunts
   NouvelEmprunt --> |include| Matériel["Sélectionner un matériel"] 
   NouvelEmprunt --> |include| Coordonnées["Coordonnées de l’étudiant"] 
   NouvelEmprunt --> |include| Durée["Durée de l’emprunt"]
@@ -15,7 +16,7 @@ graph LR
   Disponibilité["Vérifier la disponibilité"] -.-> |extend| Matériel
   Utilisateur ==> Statistique["Statistique des emprunts"]
   Etudiant -.-> |extend| Statistique
-  Utilisateur ==> CrudMatériel["CRUD matériel"]
+  Utilisateur ==> CrudMatériel["Gestion des matériels"]
   NouvelMatériel["Nouvel matériel"] --> CrudMatériel
   NouvelType["Nouvel type"] -.-> |extend| NouvelMatériel
   ModifierMatériel["Modifier un matériel"] --> CrudMatériel
@@ -90,8 +91,14 @@ classDiagram
         + Maj(Object Utilisateur)
         + Supprimer(String Identifiant)
     }
+    class Log {
+        - Identifiant : Number
+        - Desc : String
+        # UtilisateurConnecté : Utilisateur
+    }
     
     Matériel "1..n" -- "1..1" Type : Contient
     Emprunt "0..n" --> "1..1" Matériel : À propos
     Emprunt "1..n" --> "1..1" Etudiant : À propos
+    Utilisateur "0..n" -- "1..n" Log : Connexion
 ```
