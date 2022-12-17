@@ -12,41 +12,84 @@ graph LR
   Utilisateur --> Retards["Lister les retards"]
   Utilisateur --> Retour["Enregistrer le retour"]
   Retour --> |include| Emprunt["Sélectionner un emprunt"]
-  Matériel --> |include| Disponibilité["vérifier la disponibilité"]
+  Disponibilité["Vérifier la disponibilité"] -.-> |extend| Matériel
   Utilisateur --> Statistique["Statistique des emprunts"]
   Etudiant -.-> |extend| Statistique
+  Utilisateur --> CrudMatériel["CRUD matériel"]
+  NouvelMatériel["Nouvel matériel"] --|> CrudMatériel
+  NouvelType["Nouvel type"] -.-> |extend| NouvelMatériel
+  ModifierMatériel["Modifier un matériel"] --|> CrudMatériel
+  ModifierMatériel --> |include| Matériel
+  SupprimerMatériel["Supprimer un matériel"] --|> CrudMatériel
+  SupprimerMatériel --> |include| Matériel
+  ListerMatériels["Lister les matériels"] --|> CrudMatériel
+  Utilisateur --> CrudEtudiant["CRUD étudiant"]
+  Coordonnées --|> CrudEtudiant
+  ModifierEtudiant["Modifier un étudiant"] --|> CrudEtudiant
+  ModifierEtudiant --> |include| Etudiant
+  SupprimerEtudiant["Supprimer un étudiant"] --|> CrudEtudiant
+  SupprimerEtudiant --> |include| Etudiant
+  ListerEtudiants["Lister les étudiants"] --|> CrudEtudiant
+  Administrator --> CrudUtilisateur["CRUD utilisateur"]
+  NouvelUtilisateur["Nouvel utilisateur"] --|> CrudUtilisateur
+  ModifierUtilisateur["Modifier un utilisateur"] --|> CrudUtilisateur
+  ModifierUtilisateur --> |include| SUtilisateur["Sélectionner un utilisateur"]
+  SupprimerUtilisateur["Supprimer un utilisateur"] --|> CrudUtilisateur
+  SupprimerUtilisateur --> |include| SUtilisateur
+  ListerUtilisateurs["Lister les utilisateurs"] --|> CrudUtilisateur
 ```
 ## classes
 ```mermaid
 classDiagram
     class Etudiant {
         - Identifiant : String
-        + Nom : String
-        + Prénom : String
+        - Nom : String
+        - Prénom : String
         - AdresseMail : String
-        + Ajouter(object Etudiant)
-        + Maj(object Etudiant)
+        + {Static} Ajouter(Object Etudiant)
+        + Maj(Object Etudiant)
+        + {Static} Supprimer(String Identifiant)
     }
     class Type {
         - Identifiant : Number
-        + Libellé : String
+        - Libellé : String
+        + {Static} Ajouter(Object Type)
     }
     class Matériel {
         - Identifiant : Number
-        + Photo : String
-        + Nom : String
+        - Photo : String
+        - Nom : String
+        - Disponibilité : Boolean = True
         # MatérielType : Type
+        + {Static} Ajouter(Object Matériel)
+        + Maj(Object Matériel)
+        + {Static} Supprimer(Number Identifiant)
     }
     class Emprunt {
         - Identifiant : Number
         # EtudiantEmprunté : Etudiant
         # MatérielEmprunté : Matériel
-        - DateEmprunté : Date
+        - DateEmprunté : Date = SYSDATE
         - DateRetour : Date
         - Durée : Number
+        + {Static} Ajouter(Object Emprunt)
+        + Maj(Object Emprunt)
+        + {Static} Retour(Number Identifiant)
+    }
+    class Utilisateur {
+        - Identifiant : String
+        - Nom : String
+        - Prénom : String
+        - AdresseMail : String
+        - Role : String
+        - MotDePasse : Hash
+        - DateInscription : Date = SYSDATE
+        + {Static} Ajouter(Object Utilisateur)
+        + Maj(Object Utilisateur)
+        + {Static} Supprimer(String Identifiant)
     }
     
     Matériel "1..n" -- "1..1" Type : Contient
-    Matériel "1..1" --o "0..n" Emprunt : À propos
-    Etudiant "1..1" --o "1..n" Emprunt : À propos
+    Emprunt "0..n" --> "1..1" Matériel : À propos
+    Emprunt "1..n" --> "1..1" Etudiant : À propos
 ```
