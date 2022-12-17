@@ -24,14 +24,14 @@ graph LR
   SupprimerMatériel["Supprimer un matériel"] --> CrudMatériel
   SupprimerMatériel --> |include| Matériel
   ListerMatériels["Lister les matériels"] --> CrudMatériel
-  Utilisateur ==> CrudEtudiant["CRUD étudiant"]
+  Utilisateur ==> CrudEtudiant["Gestion des étudiants"]
   Coordonnées --> CrudEtudiant
   ModifierEtudiant["Modifier un étudiant"] --> CrudEtudiant
   ModifierEtudiant --> |include| Etudiant
   SupprimerEtudiant["Supprimer un étudiant"] --> CrudEtudiant
   SupprimerEtudiant --> |include| Etudiant
   ListerEtudiants["Lister les étudiants"] --> CrudEtudiant
-  Administrator ==> CrudUtilisateur["CRUD utilisateur"]
+  Administrator ==> CrudUtilisateur["Gestion des utilisateurs"]
   NouvelUtilisateur["Nouvel utilisateur"] --> CrudUtilisateur
   ModifierUtilisateur["Modifier un utilisateur"] --> CrudUtilisateur
   ModifierUtilisateur --> |include| SUtilisateur["Sélectionner un utilisateur"]
