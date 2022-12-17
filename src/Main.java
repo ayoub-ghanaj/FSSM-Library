@@ -6,10 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.util.Objects;
+
 public class Main extends Application  {
     private double xOffset = 0;
     private double yOffset = 0;
     Stage window ;
+
+    public String  staff_id;
     Scene login ;
     public static void main(String[] args) {
         launch(args);
@@ -23,7 +28,10 @@ public class Main extends Application  {
         window.setResizable(false);
         //create login layout
 //        login = new Scene(new Login_Layout(window,sql),1024,666);
-        Parent login_fxml  = FXMLLoader.load(getClass().getResource("../resources/fxml/login.fxml"));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../resources/fxml/books.fxml")));
+        Parent login_fxml  = loader.load();
+        Books_page_controller controller = loader.getController();
+        controller.setFather(window);
         login = new Scene(login_fxml);
         //resizable/movable
         login.setOnMousePressed(e-> {
@@ -37,7 +45,7 @@ public class Main extends Application  {
 
         });
         //set css
-        login.getStylesheets().add(getClass().getResource("../resources/css/login.css").toString());
+//        login.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../resources/css/books.css")).toExternalForm());
 //        W 223  H 139
 
 //        window.setMaxWidth(470);

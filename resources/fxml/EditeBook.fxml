@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.EditeBookController">
+   <children>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="Image_view" fitHeight="220.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+      <VBox prefHeight="400.0" prefWidth="399.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="352.0">
+               <VBox.margin>
+                  <Insets bottom="25.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets right="-55.0" />
+               </padding>
+               <children>
+                  <Button fx:id="close_btn" mnemonicParsing="false" text="x">
+                     <font>
+                        <Font name="Berlin Sans FB" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Label text="ID :">
+               <VBox.margin>
+                  <Insets bottom="2.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="id_textField" disable="true" prefHeight="26.0">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </TextField>
+            <Label text="Label :">
+               <VBox.margin>
+                  <Insets bottom="2.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="label_textField" prefHeight="26.0">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </TextField>
+            <Label text="Type">
+               <VBox.margin>
+                  <Insets bottom="2.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <ComboBox fx:id="Type_combo" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="150.0">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </ComboBox>
+            <Label text="Category :">
+               <VBox.margin>
+                  <Insets bottom="2.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <ComboBox fx:id="Cate_combo" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="150.0">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Button fx:id="Save_btn" mnemonicParsing="false" prefHeight="37.0" prefWidth="136.0" text="Save">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="30.0" right="57.0" />
+         </padding>
+      </VBox>
+   </children>
+</HBox>

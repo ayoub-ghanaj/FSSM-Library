@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -7,26 +9,25 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="139.0" prefWidth="224.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<HBox id="book_card" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="286.0" style="-fx-background-radius: 20; -fx-border-image-slice: 20; -fx-border-radius: 20;" styleClass="card" stylesheets="@../css/books.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.BookCardController">
    <children>
-      <ImageView fitHeight="139.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" />
-      <VBox alignment="CENTER" prefHeight="139.0" prefWidth="116.0">
+      <HBox alignment="CENTER_RIGHT" prefHeight="198.0" prefWidth="142.0">
          <children>
-            <Label maxWidth="1.7976931348623157E308" text="Label :">
+            <ImageView fx:id="card_img" fitHeight="138.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets right="26.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" prefHeight="191.0" prefWidth="130.0" styleClass="infoholder">
+         <children>
+            <Label id="book_name" fx:id="book_name" text="name">
                <font>
-                  <Font name="Bookman Old Style" size="12.0" />
+                  <Font name="Arial Black" size="12.0" />
                </font>
                <VBox.margin>
-                  <Insets left="5.0" top="5.0" />
-               </VBox.margin>
-            </Label>
-            <Label text="name">
-               <font>
-                  <Font name="Century" size="12.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets bottom="5.0" top="22.0" />
                </VBox.margin>
             </Label>
             <Label maxWidth="1.7976931348623157E308" text="Category :">
@@ -34,12 +35,12 @@
                   <Font name="Bookman Old Style" size="12.0" />
                </font>
                <VBox.margin>
-                  <Insets left="5.0" />
+                  <Insets bottom="4.0" left="5.0" top="4.0" />
                </VBox.margin>
             </Label>
-            <Label text="name">
+            <Label id="book_cate" fx:id="book_cate" text="name">
                <font>
-                  <Font name="Century" size="12.0" />
+                  <Font name="Arial Narrow Bold" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="4.0" />
@@ -50,27 +51,43 @@
                   <Font name="Bookman Old Style" size="12.0" />
                </font>
                <VBox.margin>
-                  <Insets left="5.0" />
+                  <Insets bottom="4.0" left="5.0" top="6.0" />
                </VBox.margin>
             </Label>
-            <Label text="name">
+            <Label id="book_type" fx:id="book_type" graphicTextGap="5.0" text="name">
                <font>
-                  <Font name="Century" size="12.0" />
+                  <Font name="Arial Narrow Bold" size="12.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="4.0" />
                </VBox.margin>
             </Label>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="6.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="6.0" styleClass="..\css\books.css" stylesheets="@../css/books.css">
                <children>
-                  <Button mnemonicParsing="false" text="        " />
-                  <Button mnemonicParsing="false" text="        " />
+                  <Button fx:id="edite_button" mnemonicParsing="false" onAction="#handleEditeClick" prefHeight="25.0" prefWidth="31.0" styleClass="updat-btn" text="        ">
+                     <font>
+                        <Font size="1.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="emprunt_button" mnemonicParsing="false" onAction="#handleEmpruntClick" prefHeight="24.0" prefWidth="46.0" styleClass="emp-btn" text="        ">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="1.0" />
+                     </font>
+                  </Button>
                </children>
                <VBox.margin>
                   <Insets bottom="1.0" />
                </VBox.margin>
             </HBox>
          </children>
+         <HBox.margin>
+            <Insets bottom="3.0" left="3.0" right="7.0" top="4.0" />
+         </HBox.margin>
       </VBox>
    </children>
 </HBox>

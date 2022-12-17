@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="696.0" prefWidth="1124.0" styleClass="main" stylesheets="@../css/books_page.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Books_page_controller">
+   <children>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="664.0" prefWidth="222.0" styleClass="main">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="114.0" prefWidth="217.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="112.0" prefWidth="121.0" styleClass="home-btn" />
+                  <Label text="FS">
+                     <HBox.margin>
+                        <Insets left="9.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Arial Black" size="29.0" />
+                     </font>
+                  </Label>
+                  <Label text="Lib">
+                     <font>
+                        <Font name="Arial Black" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="11.0" left="2.0" top="2.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="222.0" styleClass="selected-nav-btn" text="Documents" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets bottom="4.0" />
+               </VBox.margin></Button>
+            <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="224.0" styleClass="nav-btn" text="Etudiants" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets bottom="4.0" />
+               </VBox.margin></Button>
+            <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="223.0" styleClass="nav-btn" text="Emprunts" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets bottom="4.0" />
+               </VBox.margin></Button>
+            <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="223.0" styleClass="nav-btn" text="STAFF" textAlignment="CENTER" />
+            <VBox alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="291.0" prefWidth="222.0">
+               <children>
+                  <HBox alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="104.0" prefWidth="222.0">
+                     <children>
+                        <Button fx:id="Logout_btn" mnemonicParsing="false" prefHeight="32.0" prefWidth="29.0" styleClass="logout-btn">
+                           <HBox.margin>
+                              <Insets bottom="3.0" left="4.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="git_btn" alignment="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="32.0" styleClass="git-btn">
+                           <HBox.margin>
+                              <Insets bottom="3.0" left="150.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="696.0" prefWidth="912.0" styleClass="back-holder-main">
+         <bottom>
+            <BorderPane prefHeight="665.0" prefWidth="905.0" BorderPane.alignment="CENTER">
+               <top>
+                  <VBox prefHeight="94.0" prefWidth="905.0" styleClass="options-holder" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="792.0">
+                           <children>
+                              <StackPane alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="200.0">
+                                 <HBox.margin>
+                                    <Insets left="12.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <TextField fx:id="search_text" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="226.0" promptText="Chercher">
+                                       <padding>
+                                          <Insets left="7.0" top="-1.0" />
+                                       </padding></TextField>
+                                    <Button fx:id="search_btn" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" style="-fx-border-width: 1; -fx-border-color: #000;" styleClass="search-btn" textAlignment="CENTER">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <StackPane.margin>
+                                          <Insets bottom="4.0" right="1.0" top="4.0" />
+                                       </StackPane.margin></Button>
+                                 </children>
+                              </StackPane>
+                              <Label maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="43.0" text="Types :">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ComboBox fx:id="types" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="144.0" styleClass="tools-drop">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                              <Label maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="68.0" text="Categories :">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <ComboBox fx:id="categories" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="144.0" styleClass="tools-drop">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                              <RadioButton mnemonicParsing="false" selected="true" text="Valable">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </RadioButton>
+                              <RadioButton mnemonicParsing="false" text="Emprunté">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </RadioButton>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="903.0">
+                           <children>
+                              <Button fx:id="refresh" mnemonicParsing="false" prefHeight="33.0" prefWidth="38.0" styleClass="add-btn" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <HBox alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="19.0" prefWidth="827.0">
+                                 <children>
+                                    <Button fx:id="ADD" mnemonicParsing="false" prefHeight="33.0" prefWidth="38.0" styleClass="refresh-btn" textAlignment="CENTER" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="4.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                     <BorderPane.margin>
+                        <Insets bottom="-3.0" right="3.0" top="1.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </top>
+               <center>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="523.0" prefWidth="905.0" styleClass="options-holder" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+                     <content>
+                        <GridPane fx:id="booksDisplay" hgap="5.0" prefHeight="0.0" prefWidth="0.0" styleClass="card-holder" vgap="4.0">
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="6.0" top="-7.0" />
+                           </padding>
+                        </GridPane>
+                     </content>
+                     <BorderPane.margin>
+                        <Insets bottom="3.0" left="2.0" right="3.0" top="6.0" />
+                     </BorderPane.margin>
+                  </ScrollPane>
+               </center>
+            </BorderPane>
+         </bottom>
+         <top>
+            <HBox alignment="TOP_RIGHT" prefHeight="31.0" prefWidth="905.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="minimixe_btn" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleMiniClick" prefHeight="31.0" prefWidth="31.0" styleClass="minimize-btn" text="-">
+                     <font>
+                        <Font name="Berlin Sans FB" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="-1.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="exit_btn" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleExitClick" prefHeight="31.0" prefWidth="31.0" styleClass="exit-btn" text="x">
+                     <font>
+                        <Font name="Berlin Sans FB" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="-1.0" top="-1.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</HBox>
