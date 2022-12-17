@@ -1,42 +1,44 @@
 ## cas d'utilisation
 ```mermaid
 graph LR
-  Administrator{{"👤 Administrator"}} --> Utilisateur{{"👤 Utilisateur"}}
-  Utilisateur --> NouvelEmprunt["Nouvel emprunt"]
-  NouvelEmprunt --> |include| Matériel["Sélectionner un matériel"]
-  NouvelEmprunt --> |include| Coordonnées["Coordonnées de l’étudiant"]
+  Administrator{{"👤 Administrator"}} ==> Utilisateur{{"👤 Utilisateur"}}
+  Utilisateur ==> NouvelEmprunt["Nouvel emprunt"]
+  NouvelEmprunt --> |include| Matériel["Sélectionner un matériel"] 
+  NouvelEmprunt --> |include| Coordonnées["Coordonnées de l’étudiant"] 
   NouvelEmprunt --> |include| Durée["Durée de l’emprunt"]
-  Utilisateur --> Historique["Historique des emprunts"]
+  Utilisateur ==> Historique["Historique des emprunts"]
   Historique --> |include| Etudiant["Sélectionner un étudiant"]
   Etudiant -.-> |extend| Coordonnées
-  Utilisateur --> Retards["Lister les retards"]
-  Utilisateur --> Retour["Enregistrer le retour"]
+  Utilisateur ==> Retards["Lister les retards"]
+  Utilisateur ==> Retour["Enregistrer le retour"]
   Retour --> |include| Emprunt["Sélectionner un emprunt"]
   Disponibilité["Vérifier la disponibilité"] -.-> |extend| Matériel
-  Utilisateur --> Statistique["Statistique des emprunts"]
+  Utilisateur ==> Statistique["Statistique des emprunts"]
   Etudiant -.-> |extend| Statistique
-  Utilisateur --> CrudMatériel["CRUD matériel"]
-  CrudMatériel <|-- NouvelMatériel["Nouvel matériel"]
+  Utilisateur ==> CrudMatériel["CRUD matériel"]
+  NouvelMatériel["Nouvel matériel"] --> CrudMatériel
   NouvelType["Nouvel type"] -.-> |extend| NouvelMatériel
-  CrudMatériel <|-- ModifierMatériel["Modifier un matériel"]
+  ModifierMatériel["Modifier un matériel"] --> CrudMatériel
   ModifierMatériel --> |include| Matériel
-  CrudMatériel <|-- SupprimerMatériel["Supprimer un matériel"]
+  SupprimerMatériel["Supprimer un matériel"] --> CrudMatériel
   SupprimerMatériel --> |include| Matériel
-  CrudMatériel <|-- ListerMatériels["Lister les matériels"]
-  Utilisateur --> CrudEtudiant["CRUD étudiant"]
-  CrudEtudiant <|-- Coordonnées
-  CrudEtudiant <|-- ModifierEtudiant["Modifier un étudiant"]
+  ListerMatériels["Lister les matériels"] --> CrudMatériel
+  Utilisateur ==> CrudEtudiant["CRUD étudiant"]
+  Coordonnées --> CrudEtudiant
+  ModifierEtudiant["Modifier un étudiant"] --> CrudEtudiant
   ModifierEtudiant --> |include| Etudiant
-  CrudEtudiant <|-- SupprimerEtudiant["Supprimer un étudiant"]
+  SupprimerEtudiant["Supprimer un étudiant"] --> CrudEtudiant
   SupprimerEtudiant --> |include| Etudiant
-  CrudEtudiant <|-- ListerEtudiants["Lister les étudiants"]
-  Administrator --> CrudUtilisateur["CRUD utilisateur"]
-  CrudUtilisateur <|-- NouvelUtilisateur["Nouvel utilisateur"]
-  CrudUtilisateur <|-- ModifierUtilisateur["Modifier un utilisateur"]
+  ListerEtudiants["Lister les étudiants"] --> CrudEtudiant
+  Administrator ==> CrudUtilisateur["CRUD utilisateur"]
+  NouvelUtilisateur["Nouvel utilisateur"] --> CrudUtilisateur
+  ModifierUtilisateur["Modifier un utilisateur"] --> CrudUtilisateur
   ModifierUtilisateur --> |include| SUtilisateur["Sélectionner un utilisateur"]
-  CrudUtilisateur <|-- SupprimerUtilisateur["Supprimer un utilisateur"]
+  SupprimerUtilisateur["Supprimer un utilisateur"] --> CrudUtilisateur
   SupprimerUtilisateur --> |include| SUtilisateur
-  CrudUtilisateur <|-- ListerUtilisateurs["Lister les utilisateurs"]
+  ListerUtilisateurs["Lister les utilisateurs"] --> CrudUtilisateur
+  
+  NouvelEmprunt & Historique & Retards & Retour & Statistique & CrudMatériel & CrudEtudiant & CrudUtilisateur --> |include| Authentification[(authentification)]
 ```
 ## classes
 ```mermaid
