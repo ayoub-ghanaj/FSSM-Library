@@ -100,5 +100,5 @@ classDiagram
     Matériel "1..n" -- "1..1" Type : Contient
     Emprunt "0..n" --> "1..1" Matériel : À propos
     Emprunt "1..n" --> "1..1" Etudiant : À propos
-    Utilisateur "0..n" -- "1..n" Log : Connexion
+    Utilisateur "0..n" -- "1..n" Log : Traçabilité
 ```
