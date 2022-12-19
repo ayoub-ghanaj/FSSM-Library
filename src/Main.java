@@ -14,7 +14,14 @@ public class Main extends Application  {
     private double yOffset = 0;
     Stage window ;
 
-    public String  staff_id;
+    public static int  staff_id;
+    public static String  staff_name ;
+    public void setStaffId(int staffid, String staff_nam){
+        staff_id = staffid;
+        staff_name =  staff_nam;
+    }
+    public static boolean  isAdmin = false;
+
     Scene login ;
     public static void main(String[] args) {
         launch(args);
@@ -22,15 +29,12 @@ public class Main extends Application  {
 
     @Override
     public void start(Stage stage) throws Exception {
-
-//        SQLiteTools sql = new SQLiteTools();
         window = stage;
         window.setResizable(false);
-        //create login layout
-//        login = new Scene(new Login_Layout(window,sql),1024,666);
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../resources/fxml/books.fxml")));
+
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../resources/fxml/login.fxml")));
         Parent login_fxml  = loader.load();
-        Books_page_controller controller = loader.getController();
+        Login_controller controller = loader.getController();
         controller.setFather(window);
         login = new Scene(login_fxml);
         //resizable/movable
@@ -44,23 +48,14 @@ public class Main extends Application  {
             window.setY(e.getScreenY() - yOffset);
 
         });
-        //set css
-//        login.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../resources/css/books.css")).toExternalForm());
-//        W 223  H 139
 
-//        window.setMaxWidth(470);
-//        window.setMaxHeight(240);
-//        window.setMinWidth(420);
-//        window.setMinHeight(220);
 
         // Delete Default Boreder
         window.initStyle(StageStyle.UNDECORATED);
         window.setScene(login);
-        window.show();
         window.setTitle("Login");
         window.show();
 
     }
-
 
 }

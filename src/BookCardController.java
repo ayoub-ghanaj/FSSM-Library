@@ -12,8 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class BookCardController {
@@ -40,24 +40,21 @@ public class BookCardController {
     @FXML
     private Label book_cate;
 
-    @FXML
-
+    Books_page_controller home_controller;
     private String id;
 //    public void setFather(Stage stg){
 //        this.father = stg;
 //    }
-    public void setData(String id , String name , String cate , String type , String image,Stage stg){
+    public void setData(String id , String name , String cate , String type , Stage stg,Books_page_controller home,String image){
         this.father = stg;
-        Image src_image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(image)));
-        this.card_img.setImage(src_image);
+        Image src_image = new Image(image);
+        this.card_img.setImage(src_image); ;
 
-        this.card_img.setScaleY(((138*4.8)/src_image.getHeight()));
-        this.card_img.setScaleX(((92*4.8)/src_image.getWidth()));
-
+        this.home_controller = home;
         this.id = id;
         this.book_name.setText(name);
-        this.book_cate.setText(String.valueOf((900/src_image.getHeight())));
-        this.book_type.setText(String.valueOf((src_image.getWidth())));
+        this.book_cate.setText(cate);
+        this.book_type.setText(type);
     }
 
 
@@ -65,7 +62,7 @@ public class BookCardController {
     public void handleEditeClick(ActionEvent event) {
         try {
             // Load the FXML file
-            FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../resources/fxml/EditeBook.fxml")));
+            FXMLLoader fxmlLoader = new FXMLLoader( Objects.requireNonNull(getClass().getResource("../resources/fxml/EditeBook.fxml")));
             Parent root = (Parent) fxmlLoader.load();
 
             // Get the controller for the scene
@@ -74,8 +71,7 @@ public class BookCardController {
             // Pass data to the controller
             Stage stage = new Stage();
             stage.setTitle("Edite Document");
-            controller.setData(this.id , stage,this.card_img.getImage());
-
+            controller.setData(this.id , stage  ,home_controller);
             // Create the scene and the stage
             Scene scene = new Scene(root);
             scene.setOnMousePressed(e-> {
@@ -100,6 +96,10 @@ public class BookCardController {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
     @FXML
