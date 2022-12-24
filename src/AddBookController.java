@@ -135,6 +135,13 @@ public class AddBookController implements Initializable {
         }
     }
 
+    /**
+     *  Takes Stage  and Controller of the mother Stage  as parameters and pass them the this  and launch the fill combos function that
+     * @param father_in
+     * @param home_con
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void setData(Stage father_in , Books_page_controller  home_con) throws SQLException, ClassNotFoundException {
         this.home_controller = home_con;
         fillcombos();

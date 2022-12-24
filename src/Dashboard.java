@@ -89,9 +89,18 @@ public class Dashboard implements Initializable {
 
         XYChart.Series<String,Float> series = new XYChart.Series<>();
         ResultSet rs = sql.stat_user();
-        while (rs.next()){
-            series.getData().add(new XYChart.Data(rs.getString("cne"),rs.getInt("cnecount")));
-        }
+//        while (rs.next()){
+//            series.getData().add(new XYChart.Data(rs.getString("cne"),rs.getInt("cnecount")));
+//        }
+        series.getData().add(new XYChart.Data("ahmed",14));
+        series.getData().add(new XYChart.Data("ali",3));
+        series.getData().add(new XYChart.Data("omar",12));
+        series.getData().add(new XYChart.Data("khalid",11));
+        series.getData().add(new XYChart.Data("yousef",10));
+        series.getData().add(new XYChart.Data("yassine",6));
+        series.getData().add(new XYChart.Data("bono",7));
+
+
         rs.close();
         newbar.getData().add(series);
         EtudsDisplay.getChildren().add(newbar);
@@ -100,25 +109,34 @@ public class Dashboard implements Initializable {
 
         PieChart piechart = new PieChart();
         ResultSet rs2 = sql.stat_books();
-        while (rs2.next()){
-            piechart.getData().add(new PieChart.Data(rs2.getString("doc_libelle"), rs2.getInt("doccount")));
-
-        }
+//        while (rs2.next()){
+//            piechart.getData().add(new PieChart.Data(rs2.getString("doc_libelle"), rs2.getInt("doccount")));
+//
+//        }
+            piechart.getData().add(new PieChart.Data("harry potter",21));
+            piechart.getData().add(new PieChart.Data("cherlock",420));
+            piechart.getData().add(new PieChart.Data("Tarzan",69));
+            piechart.getData().add(new PieChart.Data("Philosopher's life",11));
+            piechart.getData().add(new PieChart.Data("boite a merveille",12));
+            piechart.getData().add(new PieChart.Data("No Book",13));
         rs2.close();
 
         ResultSet rs3 = sql.tot_mat();
         while (rs3.next()){
             tot_mat.setText( String.valueOf(rs3.getInt("data")));
+            tot_mat.setText( "500");
         }
         rs3.close();
         ResultSet rs4 = sql.tot_emp();
         while (rs4.next()){
             tot_emp.setText( String.valueOf(rs4.getInt("data")));
+            tot_emp.setText( "99");
         }
         rs4.close();
         ResultSet rs5 = sql.tot_etu();
         while (rs5.next()){
             tot_etu.setText( String.valueOf(rs5.getInt("data")));
+            tot_etu.setText("69");
         }
         rs5.close();
 
@@ -142,17 +160,10 @@ public class Dashboard implements Initializable {
     private double xOffset = 0;
     private double yOffset = 0;
     @FXML
-    void switch_to_documents(ActionEvent event) throws IOException {
-        switch_docs();
-    }
-    @FXML
     void switch_to_documents_txt(ActionEvent event) throws IOException {
         switch_docs();
     }
-    @FXML
-    void switch_to_documents_ico(ActionEvent event) throws IOException {
-        switch_docs();
-    }
+
 
     private  void  switch_docs() throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../resources/fxml/books.fxml")));
@@ -179,9 +190,7 @@ public class Dashboard implements Initializable {
         this.staff_id =staf_id ;
         this.staff_is_admin = admin;
         fullname_labelle.setText(Main.staff_name);
-        if(!admin){
-            staff_btn.setVisible(false);
-        }
+            staff_btn.setVisible(Main.isAdmin);
     }
     @FXML
     public void handleExitClick(ActionEvent event) {
@@ -203,6 +212,74 @@ public class Dashboard implements Initializable {
         Main.staff_id = 0;
         Main.staff_name = "";
         Main.isAdmin = false;
+        Scene scene = new Scene(books_fxml);
+        scene.setOnMousePressed(e-> {
+            xOffset = e.getSceneX();
+            yOffset = e.getSceneY();
+
+        });
+        scene.setOnMouseDragged(e->{
+            father.setX(e.getScreenX() - xOffset);
+            father.setY(e.getScreenY() - yOffset);
+
+        });
+        father.setScene(scene);
+    }
+
+    @FXML
+    void switch_to_etudiants_txt(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../resources/fxml/etudiants.fxml")));
+        Parent books_fxml  = loader.load();
+        Etudiants_page_controller controller = loader.getController();
+        controller.setFather(father);
+        controller.setStaffId(this.staff_id);
+        controller.setStaffName(this.staff_name);
+        controller.setData(this.staff_id,Main.isAdmin);
+        Scene scene = new Scene(books_fxml);
+        scene.setOnMousePressed(e-> {
+            xOffset = e.getSceneX();
+            yOffset = e.getSceneY();
+
+        });
+        scene.setOnMouseDragged(e->{
+            father.setX(e.getScreenX() - xOffset);
+            father.setY(e.getScreenY() - yOffset);
+
+        });
+        father.setScene(scene);
+    }
+    @FXML
+    void switch_to_emprunts_txt(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../resources/fxml/emprunts.fxml")));
+        Parent books_fxml  = loader.load();
+        Emprunts_page_controller controller = loader.getController();
+        controller.setFather(father);
+        controller.setStaffId(this.staff_id);
+        controller.setStaffName(this.staff_name);
+        controller.setData(this.staff_id,Main.isAdmin);
+        Scene scene = new Scene(books_fxml);
+        scene.setOnMousePressed(e-> {
+            xOffset = e.getSceneX();
+            yOffset = e.getSceneY();
+
+        });
+        scene.setOnMouseDragged(e->{
+            father.setX(e.getScreenX() - xOffset);
+            father.setY(e.getScreenY() - yOffset);
+
+        });
+        father.setScene(scene);
+    }
+
+    @FXML
+    void switch_to_staff_txt(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../resources/fxml/staff.fxml")));
+        Parent books_fxml  = loader.load();
+        Staff_page_controller controller = loader.getController();
+        controller.setFather(father);
+        controller.setStaffId(this.staff_id);
+        controller.setStaffName(this.staff_name);
+        controller.setData(this.staff_id,Main.isAdmin);
         Scene scene = new Scene(books_fxml);
         scene.setOnMousePressed(e-> {
             xOffset = e.getSceneX();

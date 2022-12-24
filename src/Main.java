@@ -53,7 +53,7 @@ public class Main extends Application  {
         // Delete Default Boreder
         window.initStyle(StageStyle.UNDECORATED);
         window.setScene(login);
-        window.setTitle("Login");
+        window.setTitle("FSLib");
         window.show();
 
     }

@@ -46,7 +46,7 @@
                   </VBox>
                   <VBox prefHeight="521.0" prefWidth="293.0">
                      <children>
-                        <Label text="ID :" />
+                        <Label styleClass="nametext" text="ID :" />
                         <TextField fx:id="id_textField" disable="true" prefHeight="22.0" prefWidth="303.0" styleClass="tools-drop">
                            <opaqueInsets>
                               <Insets />
@@ -58,7 +58,7 @@
                               <Insets bottom="3.0" right="22.0" />
                            </VBox.margin>
                         </TextField>
-                        <Label text="CNE :">
+                        <Label styleClass="nametext" text="CNE :">
                            <VBox.margin>
                               <Insets bottom="3.0" />
                            </VBox.margin>
@@ -74,7 +74,7 @@
                               <Insets right="22.0" />
                            </VBox.margin>
                         </TextField>
-                        <Label text="Nom :">
+                        <Label styleClass="nametext" text="Nom :">
                            <VBox.margin>
                               <Insets bottom="2.0" top="10.0" />
                            </VBox.margin>
@@ -90,12 +90,12 @@
                               <Cursor fx:constant="TEXT" />
                            </cursor>
                         </TextField>
-                        <Label text="Prenom :">
+                        <Label styleClass="nametext" text="Prenom :">
                            <VBox.margin>
                               <Insets bottom="2.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="prenom_textField1" prefHeight="26.0" styleClass="tools-drop">
+                        <TextField fx:id="prenom_textField" prefHeight="26.0" styleClass="tools-drop">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>
@@ -106,7 +106,7 @@
                               <Insets bottom="15.0" right="22.0" />
                            </VBox.margin>
                         </TextField>
-                        <Label text="Phone :" />
+                        <Label styleClass="nametext" text="Phone :" />
                         <TextField fx:id="phone_textField" prefHeight="26.0" styleClass="tools-drop">
                            <opaqueInsets>
                               <Insets />
@@ -118,7 +118,7 @@
                               <Insets bottom="8.0" right="22.0" />
                            </VBox.margin>
                         </TextField>
-                        <Label text="Email :" />
+                        <Label styleClass="nametext" text="Email :" />
                         <TextField fx:id="email_textField" prefHeight="26.0" styleClass="tools-drop">
                            <opaqueInsets>
                               <Insets />

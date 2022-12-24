@@ -34,13 +34,13 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </HBox>
-            <HBox alignment="CENTER_LEFT" onMouseClicked="#switch_dashboard" prefHeight="70" styleClass="nav">
+            <HBox alignment="CENTER_LEFT" prefHeight="70" styleClass="nav">
                <children>
                   <StackPane prefHeight="20.0" prefWidth="20.0">
                      <children>
                         <Group>
                            <children>
-                              <SVGPath content="M10.8,6V10c0,0.4,0,0.8,0,1.2c-0.1,0.3-0.2,0.7-0.5,1s-0.7,0.4-1,0.5c-0.3,0-0.7,0-1.2,0H6c-0.4,0-0.8,0-1.2,0  c-0.3-0.1-0.7-0.2-1-0.5s-0.4-0.7-0.5-1c0-0.3,0-0.7,0-1.2V6c0-0.4,0-0.8,0-1.2c0.1-0.3,0.2-0.7,0.5-1s0.7-0.4,1-0.5  c0.3,0,0.7,0,1.2,0H8c0.4,0,0.8,0,1.2,0c0.3,0.1,0.7,0.2,1,0.5s0.4,0.7,0.5,1C10.8,5.1,10.8,5.5,10.8,6z M20.7,4.8  c-0.1-0.3-0.2-0.7-0.5-1s-0.7-0.4-1-0.5c-0.3,0-0.7,0-1.2,0H16c-0.4,0-0.8,0-1.2,0c-0.3,0.1-0.7,0.2-1,0.5s-0.4,0.7-0.5,1  c0,0.3,0,0.7,0,1.2V6c0,0.4,0,0.8,0,1.2c0.1,0.3,0.2,0.7,0.5,1s0.7,0.4,1,0.5c0.3,0,0.7,0,1.2,0H18c0.4,0,0.8,0,1.2,0  c0.3-0.1,0.7-0.2,1-0.5s0.4-0.7,0.5-1c0-0.3,0-0.7,0-1.2V6C20.8,5.5,20.8,5.1,20.7,4.8z M20.7,12.8c-0.1-0.3-0.2-0.7-0.5-1  s-0.7-0.4-1-0.5c-0.3,0-0.7,0-1.2,0H16c-0.4,0-0.8,0-1.2,0c-0.3,0.1-0.7,0.2-1,0.5s-0.4,0.7-0.5,1c0,0.3,0,0.7,0,1.2V18  c0,0.4,0,0.8,0,1.2c0.1,0.3,0.2,0.7,0.5,1s0.7,0.4,1,0.5c0.3,0,0.7,0,1.2,0H18c0.4,0,0.8,0,1.2,0c0.3-0.1,0.7-0.2,1-0.5  s0.4-0.7,0.5-1c0-0.3,0-0.7,0-1.2V14C20.8,13.5,20.8,13.1,20.7,12.8z M10.7,16.8c-0.1-0.3-0.2-0.7-0.5-1s-0.7-0.4-1-0.5  c-0.3,0-0.7,0-1.2,0H6c-0.4,0-0.8,0-1.2,0c-0.3,0.1-0.7,0.2-1,0.5s-0.4,0.7-0.5,1c0,0.3,0,0.7,0,1.2V18c0,0.4,0,0.8,0,1.2  c0.1,0.3,0.2,0.7,0.5,1s0.7,0.4,1,0.5c0.3,0,0.7,0,1.2,0H8c0.4,0,0.8,0,1.2,0c0.3-0.1,0.7-0.2,1-0.5s0.4-0.7,0.5-1  c0-0.3,0-0.7,0-1.2V18C10.8,17.5,10.8,17.1,10.7,16.8z" fill="#747d8c" onMouseClicked="#switch_dashboard_icon" />
+                              <SVGPath content="M10.8,6V10c0,0.4,0,0.8,0,1.2c-0.1,0.3-0.2,0.7-0.5,1s-0.7,0.4-1,0.5c-0.3,0-0.7,0-1.2,0H6c-0.4,0-0.8,0-1.2,0  c-0.3-0.1-0.7-0.2-1-0.5s-0.4-0.7-0.5-1c0-0.3,0-0.7,0-1.2V6c0-0.4,0-0.8,0-1.2c0.1-0.3,0.2-0.7,0.5-1s0.7-0.4,1-0.5  c0.3,0,0.7,0,1.2,0H8c0.4,0,0.8,0,1.2,0c0.3,0.1,0.7,0.2,1,0.5s0.4,0.7,0.5,1C10.8,5.1,10.8,5.5,10.8,6z M20.7,4.8  c-0.1-0.3-0.2-0.7-0.5-1s-0.7-0.4-1-0.5c-0.3,0-0.7,0-1.2,0H16c-0.4,0-0.8,0-1.2,0c-0.3,0.1-0.7,0.2-1,0.5s-0.4,0.7-0.5,1  c0,0.3,0,0.7,0,1.2V6c0,0.4,0,0.8,0,1.2c0.1,0.3,0.2,0.7,0.5,1s0.7,0.4,1,0.5c0.3,0,0.7,0,1.2,0H18c0.4,0,0.8,0,1.2,0  c0.3-0.1,0.7-0.2,1-0.5s0.4-0.7,0.5-1c0-0.3,0-0.7,0-1.2V6C20.8,5.5,20.8,5.1,20.7,4.8z M20.7,12.8c-0.1-0.3-0.2-0.7-0.5-1  s-0.7-0.4-1-0.5c-0.3,0-0.7,0-1.2,0H16c-0.4,0-0.8,0-1.2,0c-0.3,0.1-0.7,0.2-1,0.5s-0.4,0.7-0.5,1c0,0.3,0,0.7,0,1.2V18  c0,0.4,0,0.8,0,1.2c0.1,0.3,0.2,0.7,0.5,1s0.7,0.4,1,0.5c0.3,0,0.7,0,1.2,0H18c0.4,0,0.8,0,1.2,0c0.3-0.1,0.7-0.2,1-0.5  s0.4-0.7,0.5-1c0-0.3,0-0.7,0-1.2V14C20.8,13.5,20.8,13.1,20.7,12.8z M10.7,16.8c-0.1-0.3-0.2-0.7-0.5-1s-0.7-0.4-1-0.5  c-0.3,0-0.7,0-1.2,0H6c-0.4,0-0.8,0-1.2,0c-0.3,0.1-0.7,0.2-1,0.5s-0.4,0.7-0.5,1c0,0.3,0,0.7,0,1.2V18c0,0.4,0,0.8,0,1.2  c0.1,0.3,0.2,0.7,0.5,1s0.7,0.4,1,0.5c0.3,0,0.7,0,1.2,0H8c0.4,0,0.8,0,1.2,0c0.3-0.1,0.7-0.2,1-0.5s0.4-0.7,0.5-1  c0-0.3,0-0.7,0-1.2V18C10.8,17.5,10.8,17.1,10.7,16.8z" fill="#747d8c" />
                            </children>
                         </Group>
                      </children>
@@ -89,7 +89,7 @@
                         </Group>
                      </children>
                   </StackPane>
-                  <Button mnemonicParsing="false" styleClass="nav-btn-text" text="Etudiants" textAlignment="LEFT">
+                  <Button mnemonicParsing="false" onAction="#switch_etudiant_txt" styleClass="nav-btn-text" text="Etudiants" textAlignment="LEFT">
                   </Button>
                </children>
                <VBox.margin>
@@ -111,7 +111,7 @@
                         </Group>
                      </children>
                   </StackPane>
-                  <Button mnemonicParsing="false" styleClass="nav-btn-text" text="Emprunts" textAlignment="LEFT">
+                  <Button mnemonicParsing="false" onAction="#switch_emprunts_txt" styleClass="nav-btn-text" text="Emprunts" textAlignment="LEFT">
                   </Button>
                </children>
                <VBox.margin>
@@ -133,7 +133,7 @@
                         </Group>
                      </children>
                   </StackPane>
-                  <Button mnemonicParsing="false" styleClass="nav-btn-text" text="Équipe" textAlignment="LEFT">
+                  <Button mnemonicParsing="false" onAction="#switch_staff_txt" styleClass="nav-btn-text" text="Équipe" textAlignment="LEFT">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
@@ -252,8 +252,28 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="903.0">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="861.0">
                            <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="30" styleClass="add-btn">
+                                 <children>
+                                    <StackPane prefHeight="17.0" prefWidth="17.0">
+                                       <children>
+                                          <Group>
+                                             <children>
+                                                <SVGPath content="M356.004,61.156c-81.37-81.47-213.377-81.551-294.848-0.182c-81.47,81.371-81.552,213.379-0.181,294.85   c81.369,81.47,213.378,81.551,294.849,0.181C437.293,274.636,437.375,142.626,356.004,61.156z M237.6,340.786   c0,3.217-2.607,5.822-5.822,5.822h-46.576c-3.215,0-5.822-2.605-5.822-5.822V167.885c0-3.217,2.607-5.822,5.822-5.822h46.576   c3.215,0,5.822,2.604,5.822,5.822V340.786z M208.49,137.901c-18.618,0-33.766-15.146-33.766-33.765   c0-18.617,15.147-33.766,33.766-33.766c18.619,0,33.766,15.148,33.766,33.766C242.256,122.755,227.107,137.901,208.49,137.901z" fill="#fff" scaleX="0.05" scaleY="0.05" strokeMiterLimit="4.0" />
+                                             </children>
+                                          </Group>
+                                       </children>
+                                    </StackPane>
+                                    <Button mnemonicParsing="false" onAction="#Tycat_handler" prefHeight="30" styleClass="btn-top" text="more" />
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <HBox.margin>
+                                    <Insets right="494.0" />
+                                 </HBox.margin>
+                              </HBox>
                                  <HBox alignment="CENTER_LEFT" prefHeight="30" styleClass="add-btn">
                                     <children>
                                        <StackPane prefHeight="17.0" prefWidth="17.0">

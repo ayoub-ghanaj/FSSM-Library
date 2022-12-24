@@ -193,7 +193,7 @@ public class Login_controller implements Initializable {
                     sql.addlog(arr[1],"Logged in");
                     FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../resources/fxml/dashboard.fxml")));
                     Parent books_fxml  = loader.load();
-                    Books_page_controller controller = loader.getController();
+                    Dashboard controller = loader.getController();
                     controller.setFather(father);
                     Main.staff_id = arr[0];
                     Main.isAdmin = false;

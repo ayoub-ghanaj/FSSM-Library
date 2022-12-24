@@ -76,6 +76,9 @@ public class    Books_page_controller implements Initializable {
     public void setStaffId(int staffid){
         this.staff_id = staffid;
     }
+    public int getStaffId(){
+        return this.staff_id ;
+    }
     public void setStaffName( String staff_nam){
         this.staff_name =  staff_nam;
     }
@@ -99,7 +102,7 @@ public class    Books_page_controller implements Initializable {
             valide.setToggleGroup(group);
             invalide.setToggleGroup(group);
             search_handler_func();
-            fillcombos();
+
 
         }catch (IOException ex){
             ex.printStackTrace();
@@ -113,6 +116,7 @@ public class    Books_page_controller implements Initializable {
     public void setData(int staf_id , boolean  admin){
         this.staff_id =staf_id ;
         this.staff_is_admin = admin;
+//        father.setTitle("documents list");
         fullname_labelle.setText(Main.staff_name);
 
     }
@@ -195,9 +199,7 @@ public class    Books_page_controller implements Initializable {
     }
 
 
-    @FXML
-    public void switch_to_home(ActionEvent event)  {
-    }
+
 
     @FXML
     public void search_handler(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
@@ -268,6 +270,7 @@ public class    Books_page_controller implements Initializable {
             booksDisplay.add(bookCard,col++,row);
         }
         rs.close();
+        fillcombos();
     }
 
     @FXML
@@ -295,17 +298,10 @@ public class    Books_page_controller implements Initializable {
     }
 
     @FXML
-    public void switch_dashboard() throws IOException, SQLException, ClassNotFoundException {
-        switch_dash();
-    }
-    @FXML
     public void switch_dashboard_txt() throws IOException, SQLException, ClassNotFoundException {
         switch_dash();
     }
-    @FXML
-    public void switch_dashboard_icon() throws IOException, SQLException, ClassNotFoundException {
-        switch_dash();
-    }
+
 
     private void switch_dash() throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../resources/fxml/dashboard.fxml")));
@@ -313,6 +309,116 @@ public class    Books_page_controller implements Initializable {
         Dashboard controller = loader.getController();
         controller.setFather(father);
         controller.setData(this.staff_id,true );
+        Scene scene = new Scene(books_fxml);
+        scene.setOnMousePressed(e-> {
+            xOffset = e.getSceneX();
+            yOffset = e.getSceneY();
+
+        });
+        scene.setOnMouseDragged(e->{
+            father.setX(e.getScreenX() - xOffset);
+            father.setY(e.getScreenY() - yOffset);
+
+        });
+        father.setScene(scene);
+    }
+
+
+    @FXML
+    void Tycat_handler(ActionEvent event) {
+        try {
+            // Load the FXML file
+            FXMLLoader fxmlLoader = new FXMLLoader( Objects.requireNonNull(getClass().getResource("../resources/fxml/addtycat.fxml")));
+            Parent root = (Parent) fxmlLoader.load();
+
+            // Get the controller for the scene
+            TycateController controller = fxmlLoader.getController();
+
+            // Pass data to the controller
+            Stage stage = new Stage();
+            stage.setTitle("Edite Document");
+            controller.setData(stage  ,this);
+            // Create the scene and the stage
+            Scene scene = new Scene(root);
+            scene.setOnMousePressed(e-> {
+                xOffsetadd = e.getSceneX();
+                yOffsetadd = e.getSceneY();
+
+            });
+            scene.setOnMouseDragged(e->{
+                stage.setX(e.getScreenX() - xOffsetadd);
+                stage.setY(e.getScreenY() - yOffsetadd);
+
+            });
+            stage.setScene(scene);
+
+            // Set the stage as modal
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            // Set the owner of the modal stage
+            stage.initOwner(father);
+            stage.initStyle(StageStyle.UNDECORATED);
+            // Show the stage
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void switch_emprunts_txt(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../resources/fxml/emprunts.fxml")));
+        Parent books_fxml  = loader.load();
+        Emprunts_page_controller controller = loader.getController();
+        controller.setFather(father);
+        controller.setStaffId(this.staff_id);
+        controller.setStaffName(this.staff_name);
+        controller.setData(this.staff_id,Main.isAdmin);
+        Scene scene = new Scene(books_fxml);
+        scene.setOnMousePressed(e-> {
+            xOffset = e.getSceneX();
+            yOffset = e.getSceneY();
+
+        });
+        scene.setOnMouseDragged(e->{
+            father.setX(e.getScreenX() - xOffset);
+            father.setY(e.getScreenY() - yOffset);
+
+        });
+        father.setScene(scene);
+    }
+    @FXML
+    void switch_etudiant_txt(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../resources/fxml/etudiants.fxml")));
+        Parent books_fxml  = loader.load();
+        Etudiants_page_controller controller = loader.getController();
+        controller.setFather(father);
+        controller.setStaffId(this.staff_id);
+        controller.setStaffName(this.staff_name);
+        controller.setData(this.staff_id,Main.isAdmin);
+        Scene scene = new Scene(books_fxml);
+        scene.setOnMousePressed(e-> {
+            xOffset = e.getSceneX();
+            yOffset = e.getSceneY();
+
+        });
+        scene.setOnMouseDragged(e->{
+            father.setX(e.getScreenX() - xOffset);
+            father.setY(e.getScreenY() - yOffset);
+
+        });
+        father.setScene(scene);
+    }
+
+    @FXML
+    void switch_staff_txt(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../resources/fxml/Staff.fxml")));
+        Parent books_fxml  = loader.load();
+        Staff_page_controller controller = loader.getController();
+        controller.setFather(father);
+        controller.setStaffId(this.staff_id);
+        controller.setStaffName(this.staff_name);
+        controller.setData(this.staff_id,Main.isAdmin);
         Scene scene = new Scene(books_fxml);
         scene.setOnMousePressed(e-> {
             xOffset = e.getSceneX();

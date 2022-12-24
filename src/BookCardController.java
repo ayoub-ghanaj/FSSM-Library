@@ -18,9 +18,9 @@ import java.util.Objects;
 
 public class BookCardController {
 
-    private Stage father ;
-    private double xOffset = 0;
-    private double yOffset = 0;
+        private Stage father ;
+        private double xOffset = 0;
+        private double yOffset = 0;
 
     @FXML
     private Label book_type;
@@ -103,7 +103,44 @@ public class BookCardController {
         }
     }
     @FXML
-    public void handleEmpruntClick(ActionEvent event) {
+    public void handleEmpruntClick(ActionEvent event) throws SQLException, ClassNotFoundException {
+        FXMLLoader fxmlLoader = new FXMLLoader( Objects.requireNonNull(getClass().getResource("../resources/fxml/Emprunt.fxml")));
+        Parent root = null;
+        try {
+            root = (Parent) fxmlLoader.load();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+
+        // Get the controller for the scene
+        Emprunt controller = fxmlLoader.getController();
+
+        // Pass data to the controller
+        Stage stage = new Stage();
+        stage.setTitle(" Emprunt");
+        controller.setDataDoc(Integer.parseInt(this.id),stage,home_controller.getStaffId(),home_controller);
+        // Create the scene and the stage
+        Scene scene = new Scene(root);
+        scene.setOnMousePressed(e-> {
+            xOffset = e.getSceneX();
+            yOffset = e.getSceneY();
+
+        });
+        scene.setOnMouseDragged(e->{
+            stage.setX(e.getScreenX() - xOffset);
+            stage.setY(e.getScreenY() - yOffset);
+
+        });
+        stage.setScene(scene);
+
+        // Set the stage as modal
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        // Set the owner of the modal stage
+        stage.initOwner(father);
+        stage.initStyle(StageStyle.UNDECORATED);
+        // Show the stage
+        stage.show();
     }
 
 }

@@ -55,13 +55,13 @@
                </cursor>
             </HBox>
 
-            <HBox alignment="CENTER_LEFT" onMouseClicked="#switch_to_documents" prefHeight="70" styleClass="nav">
+            <HBox alignment="CENTER_LEFT" prefHeight="70" styleClass="nav">
                <children>
                   <StackPane prefHeight="20.0" prefWidth="20.0">
                      <children>
                         <Group>
                            <children>
-                              <SVGPath content="M257.8,255.7c0.1,0,0.2-0.1,0.2-0.2c0,0,0-0.1,0-0.1l-3.3-3.3c-0.1-0.1-0.2-0.1-0.2,0c0,0,0,0.1,0,0.1v3  c0,0.3,0.2,0.5,0.5,0.5H257.8z M253.5,256.5c-0.3-0.3-0.5-0.8-0.5-1.3v-3.8h-3c-1.5,0-2.7,1.2-2.7,2.7v9.3c0,1.5,1.2,2.7,2.7,2.7h6  c1.5,0,2.7-1.2,2.7-2.7V257h-3.8C254.3,257,253.9,256.8,253.5,256.5z M260.8,250.3h2.9c0.1,0,0.2-0.1,0.2-0.2c0,0,0-0.1,0-0.1  l-3.3-3.3c-0.1-0.1-0.2-0.1-0.2,0c0,0,0,0.1,0,0.1v3C260.3,250.1,260.6,250.3,260.8,250.3z M260.8,251.7c-1,0-1.8-0.8-1.8-1.8V246  h-4.5c-1.4,0-2.5,1.1-2.5,2.5v1.5h1.8c0.5,0,0.9,0.2,1.2,0.5l4.5,4.6c0.3,0.3,0.5,0.8,0.5,1.2v5.7h2.2c1.4,0,2.5-1.1,2.5-2.5v-7.8  H260.8z" fill="#747d8c" onMouseClicked="#switch_to_documents_ico" styleClass="svg-path" />
+                              <SVGPath content="M257.8,255.7c0.1,0,0.2-0.1,0.2-0.2c0,0,0-0.1,0-0.1l-3.3-3.3c-0.1-0.1-0.2-0.1-0.2,0c0,0,0,0.1,0,0.1v3  c0,0.3,0.2,0.5,0.5,0.5H257.8z M253.5,256.5c-0.3-0.3-0.5-0.8-0.5-1.3v-3.8h-3c-1.5,0-2.7,1.2-2.7,2.7v9.3c0,1.5,1.2,2.7,2.7,2.7h6  c1.5,0,2.7-1.2,2.7-2.7V257h-3.8C254.3,257,253.9,256.8,253.5,256.5z M260.8,250.3h2.9c0.1,0,0.2-0.1,0.2-0.2c0,0,0-0.1,0-0.1  l-3.3-3.3c-0.1-0.1-0.2-0.1-0.2,0c0,0,0,0.1,0,0.1v3C260.3,250.1,260.6,250.3,260.8,250.3z M260.8,251.7c-1,0-1.8-0.8-1.8-1.8V246  h-4.5c-1.4,0-2.5,1.1-2.5,2.5v1.5h1.8c0.5,0,0.9,0.2,1.2,0.5l4.5,4.6c0.3,0.3,0.5,0.8,0.5,1.2v5.7h2.2c1.4,0,2.5-1.1,2.5-2.5v-7.8  H260.8z" fill="#747d8c" styleClass="svg-path" />
                            </children>
                         </Group>
                      </children>
@@ -88,7 +88,7 @@
                         </Group>
                      </children>
                   </StackPane>
-                  <Button mnemonicParsing="false" styleClass="nav-btn-text" text="Etudiants" textAlignment="LEFT">
+                  <Button mnemonicParsing="false" onAction="#switch_to_etudiants_txt" styleClass="nav-btn-text" text="Etudiants" textAlignment="LEFT">
                   </Button>
                </children>
                <VBox.margin>
@@ -110,7 +110,7 @@
                         </Group>
                      </children>
                   </StackPane>
-                  <Button mnemonicParsing="false" styleClass="nav-btn-text" text="Emprunts" textAlignment="LEFT">
+                  <Button mnemonicParsing="false" onAction="#switch_to_emprunts_txt" styleClass="nav-btn-text" text="Emprunts" textAlignment="LEFT">
                   </Button>
                </children>
                <VBox.margin>
@@ -132,7 +132,7 @@
                         </Group>
                      </children>
                   </StackPane>
-                  <Button mnemonicParsing="false" styleClass="nav-btn-text" text="Équipe" textAlignment="LEFT">
+                  <Button mnemonicParsing="false" onAction="#switch_to_staff_txt" styleClass="nav-btn-text" text="Équipe" textAlignment="LEFT">
                   </Button>
                </children>
                <VBox.margin>
@@ -156,7 +156,7 @@
                               </Group>
                            </children>
                         </StackPane>
-                        <Button mnemonicParsing="false" styleClass="nav-btn-text-logout" text="Se déconnecter" textAlignment="LEFT">
+                        <Button mnemonicParsing="false" onAction="#logout_controller" styleClass="nav-btn-text-logout" text="Se déconnecter" textAlignment="LEFT">
                         </Button>
                      </children>
                      <VBox.margin>

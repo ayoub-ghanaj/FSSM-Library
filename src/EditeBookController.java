@@ -3,9 +3,12 @@ package src;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -14,7 +17,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -54,12 +60,16 @@ public class EditeBookController implements Initializable {
     private String id;
 
     private Stage father;
+    private double xOffset = 0;
+    private double yOffset = 0;
 
    final private SQLiteTools sql = new SQLiteTools();
 
     private  File File_image =null ;
     private  Image image = null;
     private  Books_page_controller home_controller;
+    private  EditeEleveController home_controller1;
+    private  EditeStaffController home_controller2;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -76,7 +86,22 @@ public class EditeBookController implements Initializable {
                 }
             });
             this.close_btn.setOnAction(e->{
-                father.close();
+                try {
+                    if(home_controller != null){
+                        home_controller.search_handler_func();
+                    }else if(home_controller1 != null){
+                        home_controller1.refreshdata();
+                    }else if(home_controller2 != null){
+                        home_controller2.refreshdata();
+                    }
+                    father.close();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                } catch (ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             });
         }catch (Exception e){
 
@@ -84,7 +109,61 @@ public class EditeBookController implements Initializable {
 
 
     }
+    public void setDataES(String id_in , Stage father_in , EditeStaffController  home_con) throws SQLException, ClassNotFoundException {
+        this.id = id_in;
+        this.home_controller2 = home_con;
+        id_textField.setText(id_in);
+        fillcombos();
+        this.father = father_in;
+        ResultSet data = sql.displayDoc(Integer.valueOf(id_in));
+        while (data.next()){
+            Image src_image = new Image(data.getString("image"));
+            this.Image_view.setImage(src_image);
+            for (TyCat item : Type_combo.getItems()) {
+                if (item.getValue().equals(String.valueOf( data.getInt("type_id")))) {
+                    Type_combo.setValue(item);
+                    break;
+                }
+            }
+            for (TyCat item : Cate_combo.getItems()) {
+                if (item.getValue().equals(String.valueOf( data.getInt("cat_id")))) {
+                    Cate_combo.setValue(item);
+                    break;
+                }
+            }
+            label_textField.setText(data.getString("doc_libelle"));
+            data.close();
+        }
+        refreshdata();
+    }
+    public void setDataEE(String id_in , Stage father_in , EditeEleveController  home_con) throws SQLException, ClassNotFoundException {
+        this.id = id_in;
+        this.home_controller1 = home_con;
+        id_textField.setText(id_in);
+        fillcombos();
+        this.father = father_in;
+        ResultSet data = sql.displayDoc(Integer.valueOf(id_in));
+        while (data.next()){
+            Image src_image = new Image(data.getString("image"));
+            this.Image_view.setImage(src_image);
+            for (TyCat item : Type_combo.getItems()) {
+                if (item.getValue().equals(String.valueOf( data.getInt("type_id")))) {
+                    Type_combo.setValue(item);
+                    break;
+                }
+            }
+            for (TyCat item : Cate_combo.getItems()) {
+                if (item.getValue().equals(String.valueOf( data.getInt("cat_id")))) {
+                    Cate_combo.setValue(item);
+                    break;
+                }
+            }
+            label_textField.setText(data.getString("doc_libelle"));
+            data.close();
+        }
+        refreshdata();
 
+    }
     public void setData(String id_in , Stage father_in , Books_page_controller  home_con) throws SQLException, ClassNotFoundException {
         this.id = id_in;
         this.home_controller = home_con;
@@ -111,6 +190,9 @@ public class EditeBookController implements Initializable {
             data.close();
         }
 //        this.Image_view.setImage(img);
+        refreshdata();
+    }
+    public void refreshdata() throws SQLException, ClassNotFoundException {
         Label label1 = new Label( "Etudiant");
         label1.setMaxWidth(MAX_VALUE);
         label1.setAlignment(Pos.CENTER);
@@ -129,7 +211,7 @@ public class EditeBookController implements Initializable {
         dataGridList.add(label4,2,1);
         dataGridList.add(label2,3,1);
         int i =2;
-        ResultSet rs =  sql.getBookEtudiants(id_in);
+        ResultSet rs =  sql.getBookEtudiants(this.id);
         while (rs.next()){
             Button etudiant = new Button( rs.getString("cne"));
             etudiant.setId(rs.getString("etud_id"));
@@ -154,12 +236,100 @@ public class EditeBookController implements Initializable {
                     "  -fx-font-size: 11px;" +
                     "  -fx-font-weight: bold;");
 //                    "  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.274), 10, 0, 0, 0);" +
-            etudiant.setOnAction(e->{
+            etudiant.setOnAction(ec->{
 //                System.out.println(etudiant.getId() );
+                // Load the FXML file
+                FXMLLoader fxmlLoader = new FXMLLoader( Objects.requireNonNull(getClass().getResource("../resources/fxml/Editeetudiante.fxml")));
+                Parent root = null;
+                try {
+                    root = (Parent) fxmlLoader.load();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                // Get the controller for the scene
+                EditeEleveController controller = fxmlLoader.getController();
+
+                // Pass data to the controller
+                Stage stage = new Stage();
+                stage.setTitle("Edite Etudiant");
+                try {
+                    controller.setDataEB(etudiant.getId(),stage,this);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+                // Create the scene and the stage
+                Scene scene = new Scene(root);
+                scene.setOnMousePressed(e-> {
+                    xOffset = e.getSceneX();
+                    yOffset = e.getSceneY();
+
+                });
+                scene.setOnMouseDragged(e->{
+                    stage.setX(e.getScreenX() - xOffset);
+                    stage.setY(e.getScreenY() - yOffset);
+
+                });
+                stage.setScene(scene);
+
+                // Set the stage as modal
+                stage.initModality(Modality.APPLICATION_MODAL);
+
+                // Set the owner of the modal stage
+                stage.initOwner(father);
+                stage.initStyle(StageStyle.UNDECORATED);
+                // Show the stage
+                stage.show();
 
             });
             if(Main.isAdmin) {
-                staff_btn.setOnAction(e -> {
+                staff_btn.setOnAction(em -> {
+                    // Load the FXML file
+                    FXMLLoader fxmlLoader = new FXMLLoader( Objects.requireNonNull(getClass().getResource("../resources/fxml/Editestaff.fxml")));
+                    Parent root = null;
+                    try {
+                        root = (Parent) fxmlLoader.load();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+
+                    // Get the controller for the scene
+                    EditeStaffController controller = fxmlLoader.getController();
+
+                    // Pass data to the controller
+                    Stage stage = new Stage();
+                    stage.setTitle("Edite Document");
+                    try {
+                        controller.setDataEB(this.id , stage  ,this);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                    // Create the scene and the stage
+                    Scene scene = new Scene(root);
+                    scene.setOnMousePressed(e-> {
+                        xOffset = e.getSceneX();
+                        yOffset = e.getSceneY();
+
+                    });
+                    scene.setOnMouseDragged(e->{
+                        stage.setX(e.getScreenX() - xOffset);
+                        stage.setY(e.getScreenY() - yOffset);
+
+                    });
+                    stage.setScene(scene);
+
+                    // Set the stage as modal
+                    stage.initModality(Modality.APPLICATION_MODAL);
+
+                    // Set the owner of the modal stage
+                    stage.initOwner(father);
+                    stage.initStyle(StageStyle.UNDECORATED);
+                    // Show the stage
+                    stage.show();
                 });
             }
             Label staff_la = new Label( rs.getString("cin"));
@@ -215,7 +385,13 @@ public class EditeBookController implements Initializable {
     public void deleteHandler(ActionEvent event) throws SQLException, IOException, ClassNotFoundException {
         int num = sql.deleteDoc(this.id);
         if(num>0){
-            home_controller.search_handler_func();
+            if(home_controller != null){
+                home_controller.search_handler_func();
+            }else if(home_controller1 != null){
+                home_controller1.refreshdata();
+            }else if(home_controller2 != null){
+                home_controller2.refreshdata();
+            }
             father.close();
         }
     }
@@ -238,7 +414,13 @@ public class EditeBookController implements Initializable {
                 in.close();
                 int num = sql.updateDoc(this.id,label_textField.getText().trim() ,Type_combo.getValue().getValue() , Cate_combo.getValue().getValue(),path+"resources\\img\\"+new_name);
                 if(num>0){
-                    home_controller.search_handler_func();
+                    if(home_controller != null){
+                        home_controller.search_handler_func();
+                    }else if(home_controller1 != null){
+                        home_controller1.refreshdata();
+                    }else if(home_controller2 != null){
+                        home_controller2.refreshdata();
+                    }
                     father.close();
                 }
             } catch (IOException e) {
@@ -251,7 +433,13 @@ public class EditeBookController implements Initializable {
         }else {
             int num = sql.updateDoc_keep_image(this.id,label_textField.getText().trim() ,Type_combo.getValue().getValue() , Cate_combo.getValue().getValue());
             if(num>0){
-                home_controller.search_handler_func();
+                if(home_controller != null){
+                    home_controller.search_handler_func();
+                }else if(home_controller1 != null){
+                    home_controller1.refreshdata();
+                }else if(home_controller2 != null){
+                    home_controller2.refreshdata();
+                }
                 father.close();
             }
         }
