@@ -75,7 +75,7 @@ public class AddBookController implements Initializable {
 
     @FXML
     void saveHandler(ActionEvent event) {
-        if(File_image != null && image != null && Type_combo.getValue() != null &&Cate_combo.getValue() != null && label_textField.getText().trim().length() >=0){
+            if(File_image != null && image != null && Type_combo.getValue().getValue().length() > 0 &&Cate_combo.getValue().getValue().length() > 0 && label_textField.getText().trim().length() >=0){
             err_label.setVisible(false);
             String path =  new File("../database/test1.db").getAbsolutePath();
             path = path.substring(0, path.length() - 20);

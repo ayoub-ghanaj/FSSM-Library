@@ -249,9 +249,11 @@ public class    Books_page_controller implements Initializable {
             cat_id = selected_cat.getValue();
         }
         ResultSet rs ;
+        boolean emprable = true;
         if(valide.isSelected()){
             rs = sql.displayDocsAvailable(like,cat_id,type_id);
         }else {
+            emprable = false;
             rs = sql.displayDocsInavailable(like,cat_id,type_id);
         }
         int col = 0;
@@ -262,7 +264,7 @@ public class    Books_page_controller implements Initializable {
             fxmlLoader.setLocation(Objects.requireNonNull(getClass().getResource("../resources/fxml/BookCard.fxml")));
             HBox bookCard = fxmlLoader.load();
             BookCardController cardController = fxmlLoader.getController();
-            cardController.setData(rs.getString("doc_id"),rs.getString("doc_libelle"),rs.getString("cat_libelle"),rs.getString("ty_libelle"),this.father,this, rs.getString("image"));
+            cardController.setData(rs.getString("doc_id"),rs.getString("doc_libelle"),rs.getString("cat_libelle"),rs.getString("ty_libelle"),this.father,this, rs.getString("image"),emprable);
             if(col == 3){
                 col = 0;
                 ++row;

@@ -284,7 +284,7 @@ public class Staff_page_controller {
 
     public void search_handler_func() throws SQLException, ClassNotFoundException, IOException {
         String like = search_text.getText();
-        ResultSet rs = sql.getStaff(like, String.valueOf(types.getValue()));
+        ResultSet rs = sql.getStaff(like, types.getValue().getValue());
         int col = 0;
         int row = 1;
         this.booksDisplay.getChildren().clear();

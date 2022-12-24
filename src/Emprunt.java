@@ -153,7 +153,7 @@ public class Emprunt implements Initializable {
         if (docs_list == null) {
             document_id = "0";
         } else {
-            document_id = String.valueOf(docs_list.getValue());
+            document_id = String.valueOf(docs_list.getValue().getValue());
             ResultSet rs = sql.displayDoc(Integer.valueOf(document_id));
             while (rs.next()){
                 doc_id.setText(rs.getString("doc_id"));
@@ -169,7 +169,7 @@ public class Emprunt implements Initializable {
         if (etuants_list == null) {
             etudiant_id = "0";
         } else {
-            etudiant_id = String.valueOf(etuants_list.getValue());
+            etudiant_id = String.valueOf(etuants_list.getValue().getValue());
             ResultSet rs = sql.displayEtudiant(Integer.valueOf(etudiant_id));
             while (rs.next()){
                 etu_id.setText(rs.getString("etud_id"));
@@ -212,7 +212,6 @@ public class Emprunt implements Initializable {
     }
     public void fillcomboDocs() throws SQLException, ClassNotFoundException {
         docs_list.getItems().clear();
-        etuants_list.getItems().clear();
         ResultSet types_list = sql.displayDocsAvailable("","0","0");
         ObservableList<TyCat> ty_ls = docs_list.getItems();
         // Iterate through the result set and create objects for each record
@@ -242,18 +241,20 @@ public class Emprunt implements Initializable {
             if (item.getValue().equals(String.valueOf( Doc_id))) {
                 docs_list.setValue(item);
                 document_id = String.valueOf(Doc_id);
+//                document_id = String.valueOf(docs_list.getValue());
+                ResultSet rs = sql.displayDoc(Integer.parseInt(document_id));
+                while (rs.next()){
+                    doc_id.setText(rs.getString("doc_id"));
+                    doc_nom.setText(rs.getString("doc_libelle"));
+                    Image img = new Image(rs.getString("image"));
+                    doc_img.setImage(img);
+                }
+                rs.close();
                 break;
             }
         }
-        document_id = String.valueOf(docs_list.getValue());
-        ResultSet rs = sql.displayDoc(Integer.valueOf(document_id));
-        while (rs.next()){
-            doc_id.setText(rs.getString("doc_id"));
-            doc_nom.setText(rs.getString("doc_libelle"));
-            Image img = new Image(rs.getString("image"));
-            doc_img.setImage(img);
-        }
-        rs.close();
+
+
 
     }
     public void setDataEtu(int Etu_id , Stage father , int staff_id , Etudiants_page_controller controller) throws SQLException, ClassNotFoundException {
@@ -267,7 +268,7 @@ public class Emprunt implements Initializable {
                 break;
             }
         }
-        etudiant_id = String.valueOf(etuants_list.getValue());
+        etudiant_id = String.valueOf(etuants_list.getValue().getValue());
         ResultSet rs = sql.displayEtudiant(Integer.valueOf(etudiant_id));
         while (rs.next()){
             etu_id.setText(rs.getString("etud_id"));

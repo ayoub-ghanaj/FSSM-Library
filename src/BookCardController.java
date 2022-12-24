@@ -45,8 +45,9 @@ public class BookCardController {
 //    public void setFather(Stage stg){
 //        this.father = stg;
 //    }
-    public void setData(String id , String name , String cate , String type , Stage stg,Books_page_controller home,String image){
+    public void setData(String id , String name , String cate , String type , Stage stg,Books_page_controller home,String image, boolean emprable){
         this.father = stg;
+        this.emprunt_button.setVisible(emprable);
         Image src_image = new Image(image);
         this.card_img.setImage(src_image); ;
 
